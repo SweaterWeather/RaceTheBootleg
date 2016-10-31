@@ -52,12 +52,12 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
             displacement = obstacles[i].transform.position - obs.gameObject.transform.position;
             float totalRad = obstacles[i].radius + obs.radius;
            // print(i + " Radius " + totalRad + " displacementMag " +displacement.sqrMagnitude);
-            if(displacement.sqrMagnitude > totalRad*totalRad)
+            if(displacement.sqrMagnitude < totalRad*totalRad)
             {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     Vector3 getLocation()
