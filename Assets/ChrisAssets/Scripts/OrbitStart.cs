@@ -25,13 +25,17 @@ public class OrbitStart : MonoBehaviour {
     /// This is the startup function, it simply sets the stop position equal to the current position.
     /// </summary>
 	void Start () {
-	//stopPosition = 
+        stopPosition = transform.localEulerAngles;
+
+        transform.localEulerAngles = startPosition;
 	}
 	
 	/// <summary>
-    /// 
+    /// This is the update loop, it actually rotates the stupid planet.
     /// </summary>
 	void Update () {
-	
+        rotationAmmount = new Vector3((stopPosition.x - transform.localEulerAngles.x), 0, 0);
+        transform.Rotate(rotationAmmount * Time.deltaTime * 2);
+        if (transform.localEulerAngles.x > stopPosition.x) transform.localEulerAngles = stopPosition;
 	}
 }
