@@ -8,6 +8,7 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
     public GameObject player;
     public float xDisFromPlayer = 1;
     public Lloyd_ObstacleMovement obs;
+    public Lloyd_ObstacleMovement obs2;
 
     public int spawnLimit = 10;
 
@@ -29,9 +30,18 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
         }
         else if (obstacles.Count < spawnLimit)
         {
-            Lloyd_ObstacleMovement obj = (Lloyd_ObstacleMovement)Instantiate(obs, getLocation(), Quaternion.identity);
-            if (checkSurrounding(obj)) obstacles.Add(obj);
-            else { Destroy(obj.gameObject); };
+            int rand = Random.Range(1, 3);
+            switch (rand)
+            {
+                case 1:
+                    spawnObs1();
+                    break;
+                case 2:
+                    SpawnObs2();
+                    break;
+                case 3:
+                    break;
+            }
         }
 
         removeObstaclePassZ();
@@ -58,6 +68,20 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
             }
         }
         return true;
+    }
+
+    void SpawnObs2()
+    {
+        Lloyd_ObstacleMovement obj = (Lloyd_ObstacleMovement)Instantiate(obs2, getLocation(), Quaternion.identity);
+        if (checkSurrounding(obj)) obstacles.Add(obj);
+        else { Destroy(obj.gameObject); };
+    }
+
+    void spawnObs1()
+    {
+        Lloyd_ObstacleMovement obj = (Lloyd_ObstacleMovement)Instantiate(obs, getLocation(), Quaternion.identity);
+        if (checkSurrounding(obj)) obstacles.Add(obj);
+        else { Destroy(obj.gameObject); };
     }
 
     Vector3 getLocation()
