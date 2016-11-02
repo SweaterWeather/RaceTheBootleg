@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Lloyd_Spawning_Obstacle : MonoBehaviour {
+    bool startGame = false;
 
     List<Lloyd_ObstacleMovement> obstacles;
     public GameObject player;
@@ -22,9 +23,25 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
+
+        if (startGame)
+        {
+            startSpawnObs();
+        }
+        else
+        {
+            startGame = Input.GetButton("StartPlaying");
+        }
+
+	}
+
+
+    void startSpawnObs()
+    {
         if (obstacles.Count < 1)
         {
-              Lloyd_ObstacleMovement obj = (Lloyd_ObstacleMovement)Instantiate(obs, getLocation(), Quaternion.identity);
+            Lloyd_ObstacleMovement obj = (Lloyd_ObstacleMovement)Instantiate(obs, getLocation(), Quaternion.identity);
             obstacles.Add(obj);
 
         }
@@ -45,13 +62,6 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
         }
 
         removeObstaclePassZ();
-
-	}
-
-
-    void spawningObs()
-    {
-
     }
 
     bool checkSurrounding(Lloyd_ObstacleMovement obs)
