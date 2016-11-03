@@ -5,6 +5,7 @@ public class playerController : MonoBehaviour {
 
     Rigidbody body;
     public float thrust = 20;
+    float angle;
 
 
 	// Use this for initialization
@@ -18,7 +19,12 @@ public class playerController : MonoBehaviour {
         {
             float _thrust = Input.GetAxis("Horizontal") * thrust;
             Vector3 force = new Vector3(_thrust, 0, 0);
-            body.AddRelativeForce(force);
+            body.AddForce(force);
+            
+            
         }
-	}
+        angle = -Input.GetAxis("Horizontal") * 80;
+        body.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+    }
 }
