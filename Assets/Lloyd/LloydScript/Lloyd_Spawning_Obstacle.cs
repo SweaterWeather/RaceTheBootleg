@@ -7,10 +7,10 @@ using System.Collections.Generic;
 public class Lloyd_Spawning_Obstacle : MonoBehaviour {
 
 
-  
-   
-   
 
+
+
+    public float delaySpawn = 5;
     /// <summary>
     /// how hard is the level
     /// </summary>
@@ -40,8 +40,14 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
     /// </summary>
     public Lloyd_ObstacleMovement obs;
     /// <summary>
+    /// extra obstacle for begins level
+    
+    /// </summary>
+    public Lloyd_ObstacleMovement obs1_extra;
+    /// <summary>
     /// onstcle 2 that is a bit harder to dodge
     /// </summary>
+    
     public Lloyd_ObstacleMovement obs2;
     /// <summary>
     /// obstacle 3 that is
@@ -51,6 +57,11 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
     /// obstacle 4
     /// </summary>
     public Lloyd_ObstacleMovement obs4;
+    /// <summary>
+    /// the platform in the air that aid the player
+    /// </summary>
+
+    public Lloyd_ObstacleMovement flyingPlatform;
     /// <summary>
     /// maximum obstacle that is spawned on the screen
     /// </summary>
@@ -104,7 +115,9 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
             switch (rnd)
             {
                 case 6:
-                    spawnObs1(obs);
+                    int rand = Random.Range(1, 3);
+                    if(rand==1) spawnObs1(obs);
+                   else if (rand == 2) spawnObs1(obs1_extra);
                     break;
                 case 7:
                     spawnObs1(obs2);
@@ -118,7 +131,49 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
             }
         }
 
+        spawnAirPlatForm();
+
         removeObstaclePassZ();
+    }
+
+    /// <summary>
+    /// spawning air platform
+    /// </summary>
+    void spawnAirPlatForm()
+    {
+
+        int trnd = Random.Range(1, 5) + Random.Range(1, 5);
+        if (delaySpawning())
+        {
+            switch (trnd)
+            {
+                case 6:
+                    spawnObs1(flyingPlatform);
+                    break;
+                case 7:
+                    spawnObs1(flyingPlatform);
+                    break;
+            }
+        }
+     
+    }
+    /// <summary>
+    /// delaying the spawn of an obstacle
+    /// </summary>
+    /// <returns></returns>
+    bool delaySpawning()
+    {
+        if (delaySpawn < 0)
+        {
+            delaySpawn = 5;
+            return true;
+         
+        }
+        else
+        {
+            delaySpawn -= Time.deltaTime;
+            return false;
+        }
     }
     /// <summary>
     /// before the object is spawned it needs to check is surrounding to see if it is conflict with any other obstacle
