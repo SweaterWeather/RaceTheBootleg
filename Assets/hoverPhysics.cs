@@ -24,7 +24,7 @@ public class hoverPhysics : MonoBehaviour {
             
                 
             if (hit.distance < 1.23) vertVel -= .003f;
-            else vertVel = 0;
+            else vertVel *= .5f;
 
         }
         else
