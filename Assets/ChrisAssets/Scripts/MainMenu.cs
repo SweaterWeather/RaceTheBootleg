@@ -10,6 +10,11 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour {
 
     /// <summary>
+    /// This is the camera of the scene.
+    /// </summary>
+    public Camera cam;
+
+    /// <summary>
     /// This animator is the one that makes the camera swing from one menu to the next.
     /// </summary>
     public Animator swingTime;
@@ -45,6 +50,11 @@ public class MainMenu : MonoBehaviour {
     public Button startHard;
 
     /// <summary>
+    /// This bool tracks whether or not the camera is doing a weird fish eye thing.
+    /// </summary>
+    bool distorting = false;
+
+    /// <summary>
     /// 
     /// </summary>
     void Update()
@@ -61,6 +71,11 @@ public class MainMenu : MonoBehaviour {
         {
             rotation.SetInteger("index", 3);
         }
+
+        if (distorting)
+        {
+            cam.fieldOfView += Time.deltaTime * 100;
+        }
     }
 
 	/// <summary>
@@ -76,17 +91,20 @@ public class MainMenu : MonoBehaviour {
     public void PressEasy()
     {
         print("started easy!");
+        distorting = true;
     }
 
     // Update is called once per frame
     public void PressMid()
     {
         print("started mid!");
+        distorting = true;
     }
 
     // Update is called once per frame
     public void PressHard()
     {
         print("started hard!");
+        distorting = true;
     }
 }
