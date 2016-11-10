@@ -14,17 +14,26 @@ public class playerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+    void Update()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            print("jump");
+            body.AddForce(new Vector3(0, 3000, 0));
+        }
+    }
 	void FixedUpdate () {
         if (Input.GetAxis("Horizontal") != 0)
         {
             float _thrust = Input.GetAxis("Horizontal") * thrust;
             Vector3 force = new Vector3(_thrust, 0, 0);
-            body.AddForce(force);
-            
+            body.AddForce(force);     
             
         }
         angle = -Input.GetAxis("Horizontal") * 80;
         body.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+        
 
     }
 }
