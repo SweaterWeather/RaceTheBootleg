@@ -215,6 +215,26 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
         if (checkSurrounding(obj)) obstacles.Add(obj);
         else { Destroy(obj.gameObject); };
     }
+
+    void rerespondObject(Lloyd_ObstacleMovement obj)
+    {
+        bool isNotRespawn = false;
+        Lloyd_ObstacleMovement respawningObj;
+        while (isNotRespawn)
+        {
+            isNotRespawn = false;
+            respawningObj = (Lloyd_ObstacleMovement)Instantiate(obj, getLocation(), Quaternion.identity);
+            if (checkSurrounding(respawningObj))
+            {
+                obstacles.Add(respawningObj);
+                isNotRespawn = true;
+            }
+            else
+            {
+                Destroy(respawningObj.gameObject);
+            }
+        }
+    }
     /// <summary>
     /// setting the location of the spawing object
     /// </summary>
