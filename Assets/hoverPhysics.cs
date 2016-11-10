@@ -23,7 +23,7 @@ public class hoverPhysics : MonoBehaviour {
             //player is close to ground 
             
                 
-            if (hit.distance < 1.23) vertVel -= .003f;
+            if (hit.distance < 1.23) vertVel -= .005f;
             else vertVel *= .5f;
 
         }
