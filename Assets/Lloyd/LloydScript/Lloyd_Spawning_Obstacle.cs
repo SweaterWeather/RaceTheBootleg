@@ -122,7 +122,7 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
                 case 7:
                     spawnObs1(obs2);
                     break;
-                case 8:
+                case 10:
                     spawnObs1(obs3);
                     break;
                 case 9:
@@ -213,15 +213,16 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
     {
         Lloyd_ObstacleMovement obj = (Lloyd_ObstacleMovement)Instantiate(obsSpawn, getLocation(), Quaternion.identity);
         if (checkSurrounding(obj)) obstacles.Add(obj);
-        else { Destroy(obj.gameObject); };
+        else { Destroy(obj); };
     }
 
     void rerespondObject(Lloyd_ObstacleMovement obj)
     {
         bool isNotRespawn = false;
-        Lloyd_ObstacleMovement respawningObj;
-        while (isNotRespawn)
+        
+        while (!isNotRespawn)
         {
+            Lloyd_ObstacleMovement respawningObj;
             isNotRespawn = false;
             respawningObj = (Lloyd_ObstacleMovement)Instantiate(obj, getLocation(), Quaternion.identity);
             if (checkSurrounding(respawningObj))
