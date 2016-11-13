@@ -55,6 +55,11 @@ public class MainMenu : MonoBehaviour {
     bool distorting = false;
 
     /// <summary>
+    /// This int represents the difficulty the player has selected to start at.
+    /// </summary>
+    int selectedDiff = 0;
+
+    /// <summary>
     /// 
     /// </summary>
     void Update()
@@ -75,6 +80,21 @@ public class MainMenu : MonoBehaviour {
         if (distorting)
         {
             cam.fieldOfView += Time.deltaTime * 100;
+            if(cam.fieldOfView >= 160)
+            {
+                switch (selectedDiff)
+                {
+                    case 1:
+                        print("started easy!");
+                        break;
+                    case 2:
+                        print("started mid!");
+                        break;
+                    case 3:
+                        print("started hard!");
+                        break;
+                }
+            }
         }
     }
 
@@ -87,24 +107,30 @@ public class MainMenu : MonoBehaviour {
         pressedStart.enabled = false;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// This function is called by a button press in game, and triggers the game to start switching to easy difficulty.
+    /// </summary>
     public void PressEasy()
     {
-        print("started easy!");
         distorting = true;
+        selectedDiff = 1;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// This function is called by a button press in game, and triggers the game to start switching to medium difficulty.
+    /// </summary>
     public void PressMid()
     {
-        print("started mid!");
         distorting = true;
+        selectedDiff = 2;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// This function is called by a button press in game, and triggers the game to start switching to hard difficulty.
+    /// </summary>
     public void PressHard()
     {
-        print("started hard!");
         distorting = true;
+        selectedDiff = 3;
     }
 }
