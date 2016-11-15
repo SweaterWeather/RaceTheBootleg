@@ -284,7 +284,7 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
     {
         Vector3 location;
         float x = Random.Range(player.transform.position.x - xDisFromPlayer, player.transform.position.x + xDisFromPlayer);
-        float y = 0;
+        float y = 2;
         float z = startZoneZ;
         location = new Vector3(x, y, z);
 
