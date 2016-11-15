@@ -8,10 +8,8 @@ public class Lloyd_ObstacleMovement : MonoBehaviour {
     /// The radius of the object
     /// </summary>
     public float radius = 1;
-    /// <summary>
-    /// the default speed of the object
-    /// </summary>
-    public Vector3 speed = new Vector3(0,0,10);
+
+    Vector3 speed = new Vector3(0,0,staticController.speed);
 	// Use this for initialization
 	void Start () {
 
@@ -19,7 +17,7 @@ public class Lloyd_ObstacleMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        speed = new Vector3(0, 0, staticController.speed);
         transform.position -= speed*Time.deltaTime;
 	
 	}
