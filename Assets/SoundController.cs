@@ -23,6 +23,56 @@ public class SoundController : MonoBehaviour
     public AudioSource engineHigh;
 
     /// <summary>
+    /// This is the audio for the boost.
+    /// </summary>
+    public AudioSource boost;
+
+    /// <summary>
+    /// This is the audio for the combo.
+    /// </summary>
+    public AudioSource combo;
+
+    /// <summary>
+    /// This is the audio for the click.
+    /// </summary>
+    public AudioSource click;
+
+    /// <summary>
+    /// This is the audio for the death.
+    /// </summary>
+    public AudioSource death;
+
+    /// <summary>
+    /// This is the audio for the hurt.
+    /// </summary>
+    public AudioSource hurt;
+
+    /// <summary>
+    /// This is the audio for the pick up.
+    /// </summary>
+    public AudioSource pickUp;
+
+    /// <summary>
+    /// This is the audio for the power up.
+    /// </summary>
+    public AudioSource powerUp;
+
+    /// <summary>
+    /// This is the audio for the menumusic.
+    /// </summary>
+    public AudioSource menuMusic;
+
+    /// <summary>
+    /// This is the audio for the game music.
+    /// </summary>
+    public AudioSource gameMusic;
+
+    /// <summary>
+    /// This is the audio for the game over music.
+    /// </summary>
+    public AudioSource loseMusic;
+
+    /// <summary>
     /// This bool controls whether or not the engine revving sound will play.
     /// </summary>
     public bool engineRevving = false;
@@ -34,25 +84,135 @@ public class SoundController : MonoBehaviour
     /// 3: high
     /// </summary>
     int engineStep = 1;
-	
-	/// <summary>
+
+    /// <summary>
+    /// This function plays the boost sound effect.
+    /// </summary>
+    public void PlayBoost()
+    {
+        if (boost)
+        {
+            boost.Play();
+        }
+    }
+
+    /// <summary>
+    /// This function plays the click sound effect.
+    /// </summary>
+    public void PlayClick()
+    {
+        if (click)
+        {
+            click.Play();
+        }
+    }
+
+    /// <summary>
+    /// This function plays the combo sound effect.
+    /// </summary>
+    public void PlayCombo()
+    {
+        if (combo)
+        {
+            combo.Play();
+        }
+    }
+
+    /// <summary>
+    /// This function plays the death sound effect.
+    /// </summary>
+    public void PlayDeath()
+    {
+        if (death)
+        {
+            death.Play();
+        }
+    }
+
+    /// <summary>
+    /// This function plays the damage sound effect.
+    /// </summary>
+    public void PlayDamage()
+    {
+        if (hurt)
+        {
+            hurt.Play();
+        }
+    }
+
+    /// <summary>
+    /// This function plays the pick up sound effect.
+    /// </summary>
+    public void PlayPickUp()
+    {
+        if (pickUp)
+        {
+            pickUp.Play();
+        }
+    }
+
+    /// <summary>
+    /// This function plays the power up sound effect.
+    /// </summary>
+    public void PlayPowerUp()
+    {
+        if (powerUp)
+        {
+            powerUp.Play();
+        }
+    }
+
+    /// <summary>
+    /// This function plays the menu music sound effect.
+    /// </summary>
+    public void PlayMenuMusic()
+    {
+        if (menuMusic)
+        {
+            menuMusic.Play();
+        }
+    }
+
+    /// <summary>
+    /// This function plays the game music sound effect.
+    /// </summary>
+    public void PlayGameMusic()
+    {
+        if (gameMusic)
+        {
+            gameMusic.Play();
+        }
+    }
+
+    /// <summary>
+    /// This function plays the game over sound effect.
+    /// </summary>
+    public void PlayLoseMusic()
+    {
+        if (loseMusic)
+        {
+            loseMusic.Play();
+        }
+    }
+
+    /// <summary>
     /// This is the update loop.  If the engine is revving, it is played continuously here.
     /// </summary>
-	void Update () {
+    void Update () {
         if (engineRevving)
         {
             switch (engineStep)
             {
                 case 1:
-                    engineLow.Play();
+                    if(engineLow)engineLow.Play();
                     engineStep++;
                     break;
                 case 2:
-                    engineMid.Play();
+                    if(engineMid)engineMid.Play();
                     engineStep++;
                     break;
                 case 3:
-                    engineHigh.Play();
+                    if(engineHigh)engineHigh.Play();
                     engineStep = 1;
                     break;
             }
