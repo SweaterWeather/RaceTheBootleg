@@ -12,6 +12,6 @@ public class staticController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (speed > 150) speed = 150; //speed cap
 	}
 }

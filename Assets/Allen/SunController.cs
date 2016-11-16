@@ -14,7 +14,7 @@ public class SunController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         angle = 10 * Mathf.Sin(angleTick) + 7;
-        angleTick += .01f;
+        angleTick = (staticController.speed / 100 -1.25f);
         float _angle = angle * (180 / Mathf.PI);
 
         Vector3 rotationVector = transform.rotation.eulerAngles;
