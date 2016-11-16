@@ -26,12 +26,13 @@ public class sunCastDetection : MonoBehaviour {
             {
                 _player = hit.collider.gameObject;
                 playerInSun = true;
-                staticController.speed += 10 * Time.deltaTime;
+                staticController.speed += 5 * Time.deltaTime;
             }
             else
             {
                 playerInSun = false;
-                staticController.speed *= .998f;
+                staticController.speed -= 10 * Time.deltaTime;
+                    
             }         
         }
 
