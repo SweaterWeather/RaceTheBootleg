@@ -36,7 +36,21 @@ public class Lloyd_ItemAbility : MonoBehaviour {
                     print("Item1");
                     turnOffItem();
                     break;
+                case 1:
+                    print("Item2");
+                    turnOffItem();
+                    break;
+                case 2:
+                    print("Item3");
+                    turnOffItem();
+                    break;
+                case 3:
+                    print("Item4");
+                    turnOffItem();
+                    break;
+
             }
+
         }
     }
     void turnOffItem()
