@@ -43,7 +43,7 @@ public class Lloyd_RotateCube : MonoBehaviour {
                 finAni = true;
             }
             
-            print(z);
+           
             transform.localEulerAngles = new Vector3(x,y,z);
         }
     }

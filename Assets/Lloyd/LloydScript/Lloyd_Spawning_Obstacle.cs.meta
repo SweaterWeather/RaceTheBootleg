@@ -1,10 +1,20 @@
 fileFormatVersion: 2
 guid: dc787b3a1ba749844a47b01fe79ae63f
-timeCreated: 1477756080
+timeCreated: 1479314456
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {fileID: 142948, guid: e6f43d93bbc92d848abb1c67612a7bdd, type: 2}
+  - obs: {fileID: 11430224, guid: 1867cd0e2fe2b8f4cb553246c1bc73f1, type: 2}
+  - obs1_extra: {fileID: 114000013113443780, guid: 0101d0ce7481dca4cb7779aed35a15a6,
+      type: 2}
+  - obs2: {fileID: 114000011049011686, guid: ee60636689094b54dbd44ed0ce414b1a, type: 2}
+  - obs3: {fileID: 11433650, guid: 5d7a9c8df88018f4dacb046b031c60e8, type: 2}
+  - obs4: {fileID: 11439708, guid: 51e4e5ca6d4419e47b64b23fba13906a, type: 2}
+  - flyingPlatform: {fileID: 11490946, guid: f155fd42cbf4df14ebf7bd5db3ab7a1e, type: 2}
+  - ItemFly: {fileID: 114000013219642616, guid: a686e219420bfb143920e889310f092e,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

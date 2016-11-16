@@ -63,6 +63,10 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
 
     public Lloyd_ObstacleMovement flyingPlatform;
     /// <summary>
+    /// this is the item that let the player fly;
+    /// </summary>
+    public Lloyd_ObstacleMovement ItemFly;
+    /// <summary>
     /// maximum obstacle that is spawned on the screen
     /// </summary>
     public int spawnLimit = 10;
@@ -75,6 +79,8 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
     /// </summary>
     public float deadZoneZ = -10;
 	// Use this for initialization
+
+    
 	void Start () {
         obstacles = new List<Lloyd_ObstacleMovement>();
 	}
@@ -131,9 +137,18 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
             }
         }
 
-        spawnAirPlatForm();
-
+        spawnAirPlatForm(); 
+        SpawningItem();
         removeObstaclePassZ();
+    }
+
+    void SpawningItem()
+    {
+        int rndt = Random.Range(1, 5) + Random.Range(1, 5) + Random.Range(1, 5);
+        if(rndt == 12)
+        {
+            spawnObs1(ItemFly);
+        }
     }
 
     /// <summary>
@@ -160,7 +175,7 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
     /// <summary>
     /// delaying the spawn of an obstacle
     /// </summary>
-    /// <returns></returns>
+    /// <returns>return true if the delay is greater than 0 and false when less than 0</returns>
     bool delaySpawning()
     {
         if (delaySpawn < 0)
@@ -215,7 +230,7 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
         if (checkSurrounding(obj)) obstacles.Add(obj);
         else { Destroy(obj.gameObject); };
     }
-
+  /*
     void rerespondObject(Lloyd_ObstacleMovement obj)
     {
         bool isNotRespawn = false;
@@ -236,6 +251,7 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
             }
         }
     }
+    */
     /// <summary>
     /// setting the location of the spawing object
     /// </summary>
