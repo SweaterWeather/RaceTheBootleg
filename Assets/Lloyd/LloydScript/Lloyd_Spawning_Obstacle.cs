@@ -213,7 +213,7 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
     {
         Lloyd_ObstacleMovement obj = (Lloyd_ObstacleMovement)Instantiate(obsSpawn, getLocation(), Quaternion.identity);
         if (checkSurrounding(obj)) obstacles.Add(obj);
-        else { Destroy(obj); };
+        else { Destroy(obj.gameObject); };
     }
 
     void rerespondObject(Lloyd_ObstacleMovement obj)

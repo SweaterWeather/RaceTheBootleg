@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// this gameobject will rotate when it gets close to the player
+/// </summary>
 public class Lloyd_Rotator : MonoBehaviour {
 
     // Use this for initialization
@@ -26,6 +28,9 @@ public class Lloyd_Rotator : MonoBehaviour {
     /// </summary>
    
     bool isDone = false;
+    /// <summary>
+    /// initiate the function
+    /// </summary>
 	void Start () {
       
 	}
