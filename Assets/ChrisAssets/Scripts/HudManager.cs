@@ -9,6 +9,11 @@ using UnityEngine.UI;
 public class HudManager : MonoBehaviour {
 
     /// <summary>
+    /// A static reference to itself.
+    /// </summary>
+    static HudManager hudMan;
+
+    /// <summary>
     /// This is the text field of the shield counter.
     /// </summary>
     public Text shieldText;
@@ -74,17 +79,64 @@ public class HudManager : MonoBehaviour {
     public static int maxShield;
 
     /// <summary>
+    /// This is the in-game text slideout bit.
+    /// </summary>
+    public Animator ingameTextField;
+
+    /// <summary>
+    /// The text in the textfield.
+    /// </summary>
+    public Text textFieldText;
+
+    /// <summary>
     /// This is the start function, it resets all values to 0.
     /// </summary>
     void Start ()
     {
-
+        combo = 2;
+        hudMan = this;
     }
-	
-	/// <summary>
+
+    /// <summary>
+    /// This function updates the hud and score every time you pick up a blue pickup for comboing.
+    /// </summary>
+    public static void PickUpCombo()
+    {
+        pickupCounter++;
+        score += combo * 100;
+    }
+
+    /// <summary>
+    /// This function raises the text field to tell the player that the sun is rising.
+    /// </summary>
+    public void TextSunIsRising()
+    {
+        textFieldText.text = "Daylight Extended!";
+        ingameTextField.SetTrigger("goOut");
+    }
+
+    /// <summary>
+    /// This function raises the text field to tell the player how to jump.
+    /// </summary>
+    public void TextJumpTutorial()
+    {
+        textFieldText.text = "[Action] Activate Jump";
+        ingameTextField.SetTrigger("goOut");
+    }
+
+    /// <summary>
+    /// This function raises the text field to tell the player how to jump.
+    /// </summary>
+    public void TextSunlightDepleted()
+    {
+        textFieldText.text = "[Solar Energy Depleted!]";
+        ingameTextField.SetTrigger("goOut");
+    }
+
+    /// <summary>
     /// This is the update loop, it updates the text fields with their proper information, if they exist.
     /// </summary>
-	void Update () {
+    void Update () {
 	    if (jumpText) jumpText.text = "" + jumpCount + "/" + maxJump + "";
         if (shieldText) shieldText.text = "" + shieldCount + "/" + maxShield + "";
         if (scoreText) scoreText.text = "" + score + "";
@@ -112,28 +164,44 @@ public class HudManager : MonoBehaviour {
                 case 5:
                     itemText.text = "▲▲▲▲▲";
                     coolDown -= Time.deltaTime;
-                    if (coolDown <= 0) pickupCounter = 6;
+                    if (coolDown <= 0) {
+                        coolDown = .1f;
+                        pickupCounter = 6;
+                    }
                     break;
                 case 6:
                     itemText.text = "Δ▲▲▲▲";
                     coolDown -= Time.deltaTime;
-                    if (coolDown <= 0) pickupCounter = 7;
+                    if (coolDown <= 0)
+                    {
+                        coolDown = .1f;
+                        pickupCounter = 7;
+                    }
                     break;
                 case 7:
                     itemText.text = "ΔΔ▲▲▲";
                     coolDown -= Time.deltaTime;
-                    if (coolDown <= 0) pickupCounter = 8;
+                    if (coolDown <= 0)
+                    {
+                        coolDown = .1f;
+                        pickupCounter = 8;
+                    }
                     break;
                 case 8:
                     itemText.text = "ΔΔΔ▲▲";
                     coolDown -= Time.deltaTime;
-                    if (coolDown <= 0) pickupCounter = 9;
+                    if (coolDown <= 0)
+                    {
+                        coolDown = .1f;
+                        pickupCounter = 9;
+                    }
                     break;
                 case 9:
                     itemText.text = "ΔΔΔΔ▲";
                     coolDown -= Time.deltaTime;
                     if (coolDown <= 0)
                     {
+                        coolDown = .1f;
                         combo++;
                         pickupCounter = 0;
                     }
