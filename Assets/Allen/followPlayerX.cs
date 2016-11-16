@@ -2,13 +2,10 @@
 using System.Collections;
 
 public class followPlayerX : MonoBehaviour {
-
+    /// <summary>
+    /// player: reference to the player object for tracking purposes.
+    /// </summary>
     public GameObject player;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {
