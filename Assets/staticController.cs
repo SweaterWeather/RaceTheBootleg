@@ -17,7 +17,7 @@ public class staticController : MonoBehaviour {
     public static bool shield = false;
     float shieldTimer = 60;
     
-	void resetClass()
+	void resetClass()//resets values of variables
     {
         speed = 50;
         dead = false;
@@ -40,20 +40,19 @@ public class staticController : MonoBehaviour {
             }//min speed cap
 
 
-            if (boost)
+            if (boost) //boost active
             {
-                speed += 10 * Time.deltaTime;
-                boostTimer -= Time.deltaTime * 15;
+                speed += 10 * Time.deltaTime; //speed increases
+                boostTimer -= Time.deltaTime * 15; //timer
 
-                if (boostTimer < 0) boost = false;
+                if (boostTimer < 0) boost = false; //boost ends
             }
             else boostTimer = 10;
 
             if (shield) //shield is active
             {
-                shieldTimer -= Time.deltaTime * 15;
-                print(shieldTimer);
-                if (shieldTimer < 0) shield = false;
+                shieldTimer -= Time.deltaTime * 15; //timer                
+                if (shieldTimer < 0) shield = false; //shield ends
             }
             else shieldTimer = 60;
         }
@@ -63,8 +62,8 @@ public class staticController : MonoBehaviour {
             deadTimer -= Time.deltaTime * 15;
             if(deadTimer <= 0)
             {
-                resetClass();
-                SceneManager.LoadScene("mainMenu");                
+                resetClass(); //resets static class variables
+                SceneManager.LoadScene("mainMenu"); //changes back to main menu (temp solution)             
             }
         }
     }
