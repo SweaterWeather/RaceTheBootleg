@@ -21,23 +21,31 @@ public class playerController : MonoBehaviour {
 	// Update is called once per frame (I have two update loops because the GetButtonDown function does not work properly in FixedUpdate, likely because you would have to hit the button exactly when Fixed update runs which is not every frame.)
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (!staticController.dead)
         {
-            //print("jump");
-            body.AddForce(new Vector3(0, 3000, 0));//applies a force that allows player to jump
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                //print("jump");
+                body.AddForce(new Vector3(0, 3000, 0));//applies a force that allows player to jump
+            }
         }
     }
 	void FixedUpdate () { //Physics update
-        if (Input.GetAxis("Horizontal") != 0)
+        if (!staticController.dead)
         {
-            //depending on the axis value, strafe left or right.
-            float _thrust = Input.GetAxis("Horizontal") * thrust;
-            Vector3 force = new Vector3(_thrust, 0, 0);
-            body.AddForce(force);     
-            
+            if (Input.GetAxis("Horizontal") != 0)
+            {
+                //depending on the axis value, strafe left or right.
+                float _thrust = Input.GetAxis("Horizontal") * thrust;
+                Vector3 force = new Vector3(_thrust, 0, 0);
+                body.AddForce(force);
+
+            }
+            angle = -Input.GetAxis("Horizontal") * 80; //sets angle of player based on turn axis
+            body.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
-        angle = -Input.GetAxis("Horizontal") * 80; //sets angle of player based on turn axis
-        body.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        else gameObject.GetComponent<Rigidbody>().isKinematic = true; //stops physics from applying to object
 
         
 
