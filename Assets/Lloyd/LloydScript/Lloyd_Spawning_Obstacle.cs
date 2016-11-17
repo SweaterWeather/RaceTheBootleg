@@ -8,7 +8,9 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
 
 
 
-
+    /// <summary>
+    /// Delay the time to spawn platform
+    /// </summary>
 
     public float delaySpawn = 5;
     /// <summary>
@@ -63,9 +65,18 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
 
     public Lloyd_ObstacleMovement flyingPlatform;
     /// <summary>
-    /// this is the item that let the player fly;
+    /// this is the item that let the player flies;
     /// </summary>
     public Lloyd_ObstacleMovement ItemFly;
+    /// <summary>
+    ///this item give the player have extra shields
+    /// </summary>
+    public Lloyd_ObstacleMovement ItemShield;
+    /// <summary>
+    /// this is the item that let the player gains more point;
+    /// </summary>
+    public Lloyd_ObstacleMovement ItemCoin;
+
     /// <summary>
     /// maximum obstacle that is spawned on the screen
     /// </summary>
@@ -147,7 +158,20 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
         int rndt = Random.Range(1, 5) + Random.Range(1, 5) + Random.Range(1, 5);
         if(rndt == 12)
         {
-            spawnObs1(ItemFly);
+            int rndItem = Random.Range(1, 4);
+            switch (rndItem)
+            {
+                case 1:
+                    spawnObs1(ItemFly);
+                    break;
+                case 2:
+                    spawnObs1(ItemShield);
+                    break;
+                case 3:
+                    spawnObs1(ItemCoin);
+                    break;
+            }
+           
         }
     }
 
