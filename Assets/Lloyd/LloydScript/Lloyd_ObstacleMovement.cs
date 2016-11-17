@@ -21,9 +21,5 @@ public class Lloyd_ObstacleMovement : MonoBehaviour {
         transform.position -= speed*Time.deltaTime;
 	
 	}
-    void OnTriggerEnter(Collider other)
-    {
-        staticController.dead = true;
-        
-    }
+    
 }
