@@ -130,6 +130,17 @@ public class SoundController : MonoBehaviour
     }
 
     /// <summary>
+    /// STOP.
+    /// </summary>
+    public void StopGameMusic()
+    {
+        if (gameMusic)
+        {
+            gameMusic.Stop();
+        }
+    }
+
+    /// <summary>
     /// This function plays the damage sound effect.
     /// </summary>
     public void PlayDamage()

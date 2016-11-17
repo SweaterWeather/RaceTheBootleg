@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 /// <summary>
 /// this class give the player gameObject special ability when it touch the item
@@ -33,19 +34,19 @@ public class Lloyd_ItemAbility : MonoBehaviour {
             switch (itemPowerIndex)
             {
                 case 0:
-                    print("Item1");
+                    HudManager.jumpCount = 1;
                     turnOffItem();
                     break;
                 case 1:
-                    print("Item2");
+                    HudManager.shieldCount = 1;
                     turnOffItem();
                     break;
                 case 2:
-                    print("Item3");
+                    HudManager.PickUpCombo();
                     turnOffItem();
                     break;
                 case 3:
-                    print("Item4");
+                    staticController.boost = true;
                     turnOffItem();
                     break;
 

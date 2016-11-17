@@ -31,6 +31,6 @@ public class GameOverController : MonoBehaviour {
     /// This function switches you to the scene you are supposed to be in, whichever we decide that may be.
     /// </summary>
 	public void SwaptoGameOver () {
-        print("swapped!");
+        SceneManager.LoadScene(1);
 	}
 }

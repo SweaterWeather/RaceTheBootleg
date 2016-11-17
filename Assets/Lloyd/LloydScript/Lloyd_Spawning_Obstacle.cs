@@ -20,7 +20,7 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
     /// <summary>
     /// score that the player earn
     /// </summary>
-    public int playerScore = 0;
+    public float playerScore = 0;
     /// <summary>
     /// a bool that init the game when it is true
     /// </summary>
@@ -93,13 +93,15 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
 
     
 	void Start () {
+        startGame = true;
         obstacles = new List<Lloyd_ObstacleMovement>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-
+        HudManager.score += Time.deltaTime * 50;
+        playerScore = (int)HudManager.score;
 
         if (startGame)
         {

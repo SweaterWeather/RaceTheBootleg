@@ -9,6 +9,16 @@ using UnityEngine.UI;
 public class HudManager : MonoBehaviour {
 
     /// <summary>
+    /// Game over man.
+    /// </summary>
+    public GameOverController gameOver;
+
+    /// <summary>
+    /// Sound.
+    /// </summary>
+    public SoundController sound;
+
+    /// <summary>
     /// A static reference to itself.
     /// </summary>
     static HudManager hudMan;
@@ -51,7 +61,7 @@ public class HudManager : MonoBehaviour {
     /// <summary>
     /// This is the player's current score.
     /// </summary>
-    public static int score;
+    public static float score;
 
     /// <summary>
     /// This is the player's current combo.
@@ -95,6 +105,10 @@ public class HudManager : MonoBehaviour {
     {
         combo = 2;
         hudMan = this;
+        score = 0;
+        shieldCount = 0;
+        jumpCount = 0;
+        sound.PlayGameMusic();
     }
 
     /// <summary>
@@ -134,12 +148,23 @@ public class HudManager : MonoBehaviour {
     }
 
     /// <summary>
+    /// This games the overs.
+    /// </summary>
+    public void GameOverMan()
+    {
+        sound.PlayLoseMusic();
+        sound.StopGameMusic();
+        Destroy(this.gameObject);
+        Instantiate(gameOver);
+    }
+
+    /// <summary>
     /// This is the update loop, it updates the text fields with their proper information, if they exist.
     /// </summary>
     void Update () {
 	    if (jumpText) jumpText.text = "" + jumpCount + "/" + maxJump + "";
         if (shieldText) shieldText.text = "" + shieldCount + "/" + maxShield + "";
-        if (scoreText) scoreText.text = "" + score + "";
+        if (scoreText) scoreText.text = "" + (int)score + "";
         if (comboText) comboText.text = "x" + combo + "";
         if (itemText)
         {

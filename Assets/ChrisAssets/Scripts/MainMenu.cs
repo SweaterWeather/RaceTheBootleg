@@ -85,13 +85,16 @@ public class MainMenu : MonoBehaviour {
                 switch (selectedDiff)
                 {
                     case 1:
-                        print("started easy!");
+                        StartTheGame.startDiff = 0;
+                        SceneManager.LoadScene(1);
                         break;
                     case 2:
-                        print("started mid!");
+                        StartTheGame.startDiff = 1;
+                        SceneManager.LoadScene(1);
                         break;
                     case 3:
-                        print("started hard!");
+                        StartTheGame.startDiff = 2;
+                        SceneManager.LoadScene(1);
                         break;
                 }
             }
