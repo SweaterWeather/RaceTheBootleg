@@ -23,11 +23,19 @@ public class playerController : MonoBehaviour {
     {
         if (!staticController.dead)
         {
-
-            if (Input.GetButtonDown("Jump"))
+            //TODO add in constraint
+            if (Input.GetButtonDown("Jump")) //Jump input
             {
                 //print("jump");
                 body.AddForce(new Vector3(0, 3000, 0));//applies a force that allows player to jump
+            }
+            //TODO add in constraint
+            if (Input.GetButtonDown("Fire3")) //Shield (Shift Key)
+            {
+                //set static shield property.
+                staticController.shield = true;
+                
+
             }
         }
     }

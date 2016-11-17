@@ -15,9 +15,13 @@ public class crashCheck : MonoBehaviour {
 
         if(Physics.Raycast(ray, out hit, .75f))
         {
-            if(hit.collider.tag == "obstacle")
+            if(hit.collider.tag == "obstacle" && !staticController.shield)
             {
                 staticController.dead = true;
+            }
+            if (hit.collider.tag == "obstacle" && staticController.shield)
+            {
+                gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 1000, 0)); //if shield is active and hit object, push player up (to avoid getting sucked under map)
             }
         }
 
