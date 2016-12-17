@@ -34,18 +34,22 @@ public class Lloyd_ItemAbility : MonoBehaviour {
             switch (itemPowerIndex)
             {
                 case 0:
+                    SoundController.playPickup = true;
                     HudManager.jumpCount = 1;
                     turnOffItem();
                     break;
                 case 1:
+                    SoundController.playPickup = true;
                     HudManager.shieldCount = 1;
                     turnOffItem();
                     break;
                 case 2:
+                    SoundController.playPickup = true;
                     HudManager.PickUpCombo();
                     turnOffItem();
                     break;
                 case 3:
+                    SoundController.playBoost = true;
                     staticController.boost = true;
                     turnOffItem();
                     break;

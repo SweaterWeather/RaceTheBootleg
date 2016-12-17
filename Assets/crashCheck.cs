@@ -30,12 +30,22 @@ public class crashCheck : MonoBehaviour {
             print(staticController.shield);
             if (hit.collider.tag == "obstacle" && !staticController.shield && !staticController.dead)
             {
-                sound.PlayDeath();
-                if (yo) yo.GameOverMan();
-                staticController.dead = true;
+                if (HudManager.shieldCount > 0)
+                {
+                    SoundController.playHurt = true;
+                    HudManager.shieldCount--;
+                    staticController.shield = true;
+                }
+                else
+                {
+                    sound.PlayDeath();
+                    if (yo) yo.GameOverMan();
+                    staticController.dead = true;
+                }
             }
             if (hit.collider.tag == "obstacle" && staticController.shield)
             {
+                print("shielded!");
                 gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 1000, 0)); //if shield is active and hit object, push player up (to avoid getting sucked under map)
             }
         }

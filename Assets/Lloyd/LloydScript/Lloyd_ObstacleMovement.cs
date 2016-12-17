@@ -15,8 +15,10 @@ public class Lloyd_ObstacleMovement : MonoBehaviour {
 
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	/// <summary>
+    /// Movement is handeled here.
+    /// </summary>
+	void FixedUpdate () {
         speed = new Vector3(0, 0, staticController.speed);
         transform.position -= speed*Time.deltaTime;
 	

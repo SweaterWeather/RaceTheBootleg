@@ -6,6 +6,34 @@ using System.Collections;
 /// </summary>
 public class SoundController : MonoBehaviour
 {
+    /// <summary>
+    /// An easier to use way to call for sounds to play.
+    /// </summary>
+    public static bool playBoost = false;
+    /// <summary>
+    /// An easier to use way to call for sounds to play.
+    /// </summary>
+    public static bool playCombo = false;
+    /// <summary>
+    /// An easier to use way to call for sounds to play.
+    /// </summary>
+    public static bool playClick = false;
+    /// <summary>
+    /// An easier to use way to call for sounds to play.
+    /// </summary>
+    public static bool playDeath = false;
+    /// <summary>
+    /// An easier to use way to call for sounds to play.
+    /// </summary>
+    public static bool playHurt = false;
+    /// <summary>
+    /// An easier to use way to call for sounds to play.
+    /// </summary>
+    public static bool playPickup = false;
+    /// <summary>
+    /// An easier to use way to call for sounds to play.
+    /// </summary>
+    public static bool playPowerup = false;
 
     /// <summary>
     /// This is the low pitch made by the revving engine.
@@ -209,7 +237,52 @@ public class SoundController : MonoBehaviour
     /// <summary>
     /// This is the update loop.  If the engine is revving, it is played continuously here.
     /// </summary>
-    void Update () {
+    void Update ()
+    {
+
+        if (playBoost)
+        {
+            playBoost = false;
+            PlayBoost();
+        }
+
+        if (playClick)
+        {
+            playClick = false;
+            PlayClick();
+        }
+
+        if (playCombo)
+        {
+            playCombo = false;
+            PlayCombo();
+        }
+
+        if (playDeath)
+        {
+            playDeath = false;
+            PlayDeath();
+        }
+
+        if (playHurt)
+        {
+            playHurt = false;
+            PlayDamage();
+        }
+
+        if (playPickup)
+        {
+            playPickup = false;
+            PlayPickUp();
+        }
+
+        if (playPowerup)
+        {
+            playPowerup = false;
+            PlayPowerUp();
+        }
+
+
         if (engineRevving)
         {
             switch (engineStep)

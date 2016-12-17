@@ -190,6 +190,7 @@ public class HudManager : MonoBehaviour {
                     itemText.text = "▲▲▲▲▲";
                     coolDown -= Time.deltaTime;
                     if (coolDown <= 0) {
+                        SoundController.playPowerup = true;
                         coolDown = .1f;
                         pickupCounter = 6;
                     }

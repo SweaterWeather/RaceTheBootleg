@@ -32,15 +32,22 @@ public class hoverPhysics : MonoBehaviour {
                 //player is close to ground, push up
             
                 
-                if (hit.distance < 1.23) vertVel -= .005f; //velocity pushes up
+                if (hit.distance < 1.23) vertVel -= (.005f) * 60 * Time.deltaTime; //velocity pushes up
                 else vertVel *= .5f; //strong slowdown of velocity as its over a certain speed.
 
+            }
+            else if (transform.position.y > 5)
+            {
+                //player is FLYING GUYS.
+
+                vertVel += (2f) * 60 * Time.deltaTime; //slow but steadily increasing decent speed.
+                if (vertVel > maxVel) vertVel = maxVel; //caps the falling velocity if it passes a certain amount
             }
             else
             {
                 //player is FLYING GUYS.
 
-                vertVel += .002f; //slow but steadily increasing decent speed.
+                vertVel += (.002f) * 60 * Time.deltaTime; //slow but steadily increasing decent speed.
                 if (vertVel > maxVel) vertVel = maxVel; //caps the falling velocity if it passes a certain amount
             }
 

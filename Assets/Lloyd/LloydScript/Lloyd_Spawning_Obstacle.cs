@@ -6,7 +6,7 @@ using System.Collections.Generic;
 /// </summary>
 public class Lloyd_Spawning_Obstacle : MonoBehaviour {
 
-
+    
 
     /// <summary>
     /// Delay the time to spawn platform
@@ -128,7 +128,7 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
             obstacles.Add(obj);
 
         }
-        else if (obstacles.Count < spawnLimit)
+        else /*if (obstacles.Count < spawnLimit)*/
         {
           
             switch (rnd)
@@ -158,7 +158,7 @@ public class Lloyd_Spawning_Obstacle : MonoBehaviour {
     void SpawningItem()
     {
         int rndt = Random.Range(1, 5) + Random.Range(1, 5) + Random.Range(1, 5);
-        if(rndt == 12)
+        if(rndt == 12 || rndt == 5 || rndt == 7)
         {
             int rndItem = Random.Range(1, 4);
             switch (rndItem)
